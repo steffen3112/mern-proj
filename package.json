@@ -1,0 +1,36 @@
+{
+  "name": "mern-proj",
+  "version": "1.0.0",
+  "description": "simple mern-stack sample project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steffen3112/mern-proj.git"
+  },
+  "keywords": [
+    "mern",
+    "mongodb",
+    "react",
+    "express",
+    "nodejs"
+  ],
+  "author": "Steffen Schwarz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steffen3112/mern-proj/issues"
+  },
+  "homepage": "https://github.com/steffen3112/mern-proj#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^3.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
