@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AppNavbar from './components/AppNavbar';
+import ShoppingList from './components/ShoppingList'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
           <h1>Welcome to React</h1>
           <AppNavbar />
+          <ShoppingList />
       </div>
     );
   }

@@ -33,10 +33,15 @@ class AppNavbar extends Component {
                         <NavbarBrand href="/">Shopping List</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
+                            <Nav className="ml-auto" navbar >
                                 <NavItem>
                                     <NavLink href="https://github.com/steffen3112">
                                         Github Steffen
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink href="https://twitter.com">
+                                    Twitter
                                     </NavLink>
                                 </NavItem>
                             </Nav>
