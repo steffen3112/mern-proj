@@ -4,31 +4,54 @@ import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import uuid from 'uuid';
 
 import { connect } from 'react-redux';
-import { getItems } from '../actions/itemActions';
+import { getItems, addItem } from '../actions/itemActions';
 
 import PropTypes from 'prop-types';
+import ItemModal from './ItemModal';
 
 class ShoppingList extends Component {
+
+    constructor(){
+        super();
+
+        this.state = {
+            isOpen: false
+        }
+    }
     
     componentDidMount() {
         this.props.getItems();
     }
 
+    openModal = () => {
+        this.setState({isOpen: true})
+    }
+
+    closeModal = () => {
+        this.setState({isOpen: false})
+    }
+
     render() {
 
-        const { items } = this.props.item;
+        const { item } = this.props.item;
+        const { isOpen } = this.state;
+
+        const addItem = this.props.addItem;
+
+        console.log(this.props);
 
         return(
             <Container>
                 <Button
                     color="dark"
                     style={{marginBottom: "2rem"}}
-                    onClick={() => console.log("hello")}
+                    onClick={() => this.openModal()}
                 >Add Item
                 </Button>
+                <ItemModal open={isOpen} close={this.closeModal} addItem={addItem}/>
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
-                        {items.map( ({id, name}) => (
+                        { item != 'undefined' && item != null ? item.map( ({id, name}) => (
                             <CSSTransition key={id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                 <Button
@@ -41,7 +64,9 @@ class ShoppingList extends Component {
                                 {name}
                                 </ListGroupItem>
                             </CSSTransition>
-                        ) )}
+                        ) ) 
+                        : null        
+                    }
                     </TransitionGroup>
                 </ListGroup>
             </Container>
@@ -52,12 +77,16 @@ class ShoppingList extends Component {
 
 ShoppingList.propTypes = {
     getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
+    item: PropTypes.array.isRequired
 }
 
+const mapDispatchToProps = dispatch => ({
+    addItem: item => dispatch(addItem(item)),
+    getItems: () => dispatch(getItems)
+})
 
 const mapStateToProps = state => ({
     item: state.item
 })
 
-export default connect(mapStateToProps, {getItems})(ShoppingList);
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);
