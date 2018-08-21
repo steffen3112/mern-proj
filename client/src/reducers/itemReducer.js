@@ -10,7 +10,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
 
-    console.log("REDUCING", state, action)
     switch(action.type) {
         case GET_ITEMS:
             return {
@@ -18,7 +17,7 @@ export default function(state = initialState, action) {
             }
         
         case ADD_ITEM:
-            return [...state.item, action.payload]
+            return { ...state, item: [...state.item, action.payload] }
 
         default:
             return state;

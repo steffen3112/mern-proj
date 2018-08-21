@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import uuid from 'uuid';
 
 import { connect } from 'react-redux';
 import { getItems, addItem } from '../actions/itemActions';
 
 import PropTypes from 'prop-types';
-import ItemModal from './ItemModal';
+import ItemModal from './item-modal/ItemModal';
 
 class ShoppingList extends Component {
 
@@ -31,12 +30,16 @@ class ShoppingList extends Component {
         this.setState({isOpen: false})
     }
 
+    addingItemHandler = (item) => {
+        this.setState({
+            isOpen: false
+        }, () => this.props.addItem(item))
+    }
+
     render() {
 
         const { item } = this.props.item;
         const { isOpen } = this.state;
-
-        const addItem = this.props.addItem;
 
         console.log(this.props);
 
@@ -48,7 +51,7 @@ class ShoppingList extends Component {
                     onClick={() => this.openModal()}
                 >Add Item
                 </Button>
-                <ItemModal open={isOpen} close={this.closeModal} addItem={addItem}/>
+                <ItemModal open={isOpen} close={this.closeModal} addItem={this.addingItemHandler}/>
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
                         { item != 'undefined' && item != null ? item.map( ({id, name}) => (
@@ -75,9 +78,10 @@ class ShoppingList extends Component {
     }
 }
 
+// The Itemreducer returns a Object, with an array and as key "item" --> this.props.item.item accesses the "item-array"
 ShoppingList.propTypes = {
     getItems: PropTypes.func.isRequired,
-    item: PropTypes.array.isRequired
+    item: PropTypes.object.isRequired
 }
 
 const mapDispatchToProps = dispatch => ({

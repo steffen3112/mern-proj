@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import { Button, Input } from 'reactstrap'
 import uuid from 'uuid';
+
+import './modal.css'
+
 
 Modal.setAppElement('#root')
 
@@ -28,21 +32,19 @@ export default class ItemModal extends Component {
         const  { item } = this.state;
 
         return(
-            <div>
                 <Modal 
                     isOpen={open}
                     onRequestClose={close}
                     style={customStyles}
                 >
                     <h2>Add an Item please</h2>
-                    <button onClick={() => close()}>close</button>
                     <br />
                
-                        <input type="text" onChange={(evt) => this.handleChange(evt)}/>
-                        <button onClick={() => addItem(item)}>Add Item to Cart</button>
+                        <Input type="text" onChange={(evt) => this.handleChange(evt)}/>
+                        <Button id="cancel-button" onClick={() => close()}>cancel</Button>
+                        <Button id="add-button" color="primary" onClick={() => addItem(item)}>Add Item to Cart</Button>
                     
                 </Modal>
-            </div>
         )
     }
 
@@ -55,6 +57,6 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      transform             : 'translate(-50%, -50%)',
     }
   };

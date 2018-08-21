@@ -1,0 +1,12 @@
+h2 {
+    color: #aaa
+
+}
+
+#add-button {
+    float: right;
+    margin-top: 5%;
+}
+#cancel-button {
+    margin-top: 5%;
+}
