@@ -1,15 +1,24 @@
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from './types';
+import axios from 'axios';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
 
-export const getItems = () => {
-    return {
-        type: GET_ITEMS
-    }
+// async stuff is handled by "currying" a dispatch parameter (redux thunk)
+export const getItems = () => dispatch => {
+    dispatch(setItemsLoading())
+    axios.get('/api/items')
+        .then( res => dispatch({
+            type: GET_ITEMS,
+            payload: res.data
+        }))
+
 }
 
-export const addItem = (item) => {
+export const addItem = item => dispatch => {
 
-    console.log("Adding Item:", item);
-
+    axios.post('/api/items', item)
+        .then( res => dispatch({
+            type: ADD_ITEM,
+            payload: res.data
+        }))
     return {
         type: ADD_ITEM,
         payload: item
@@ -17,13 +26,25 @@ export const addItem = (item) => {
 
 }
 
-export const deleteItem = (item) => {
+export const deleteItem = (id) => dispatch =>  {
 
-    console.log("Deleting Item: ", item);
+    axios.delete(`/api/items/${id}`)
+        .then( res => dispatch({
+            type: DELETE_ITEM,
+            payload: id
+        }))
 
     return {
         type: DELETE_ITEM,
-        payload: item
+        payload: id
+    }
+
+}
+
+export const setItemsLoading = () => {
+
+    return {
+        type: ITEMS_LOADING
     }
 
 }

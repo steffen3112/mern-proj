@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Button, Input } from 'reactstrap'
-import uuid from 'uuid';
 
 import './modal.css'
 
@@ -20,7 +19,6 @@ export default class ItemModal extends Component {
     handleChange = (evt) => {
         this.setState({
             item: {
-                id: uuid(),
                 name: evt.target.value
             }
         })
@@ -39,7 +37,7 @@ export default class ItemModal extends Component {
                 >
                     <h2>Add an Item please</h2>
                     <br />
-               
+
                         <Input type="text" onChange={(evt) => this.handleChange(evt)}/>
                         <Button id="cancel-button" onClick={() => close()}>cancel</Button>
                         <Button id="add-button" color="primary" onClick={() => addItem(item)}>Add Item to Cart</Button>

@@ -55,13 +55,13 @@ class ShoppingList extends Component {
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
                         { item != 'undefined' && item != null ? item.map( (item) => (
-                            <CSSTransition key={item.id} timeout={500} classNames="fade">
+                            <CSSTransition key={item._id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                 <Button
                                     className="remove-btn"
                                     color="danger"
                                     size="sm"
-                                    onClick={() => this.props.deleteItem(item)}
+                                    onClick={() => this.props.deleteItem(item._id)}
                                 >&times;
                                 </Button>
                                 {item.name}
@@ -78,7 +78,7 @@ class ShoppingList extends Component {
     }
 }
 
-// The Itemreducer returns a Object, with an array and as key "item" --> this.props.item.item accesses the "item-array"
+// The Itemreducer returns a Object with an array and as key "item" --> this.props.item.item accesses the "item-array"
 ShoppingList.propTypes = {
     getItems: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired
@@ -86,8 +86,8 @@ ShoppingList.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item)),
-    deleteItem: item => dispatch(deleteItem(item)),
-    getItems: () => dispatch(getItems)
+    deleteItem: id => dispatch(deleteItem(id)),
+    getItems: () => dispatch(getItems())
 })
 
 const mapStateToProps = state => ({
