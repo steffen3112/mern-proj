@@ -16,3 +16,14 @@ export const addItem = (item) => {
     }
 
 }
+
+export const deleteItem = (item) => {
+
+    console.log("Deleting Item: ", item);
+
+    return {
+        type: DELETE_ITEM,
+        payload: item
+    }
+
+}

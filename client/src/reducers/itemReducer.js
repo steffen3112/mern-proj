@@ -19,8 +19,17 @@ export default function(state = initialState, action) {
         case ADD_ITEM:
             return { ...state, item: [...state.item, action.payload] }
 
+        case DELETE_ITEM:
+            let index = state.item.findIndex( item => item == action.payload)
+            return {
+                ...state, item: [
+                    ...state.item.slice(0, index),
+                    ...state.item.slice(index + 1)
+                ]
+            }
+
         default:
-            return state;
+            return state
     }
 
 

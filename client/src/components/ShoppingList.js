@@ -3,7 +3,7 @@ import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import { connect } from 'react-redux';
-import { getItems, addItem } from '../actions/itemActions';
+import { getItems, addItem, deleteItem } from '../actions/itemActions';
 
 import PropTypes from 'prop-types';
 import ItemModal from './item-modal/ItemModal';
@@ -54,17 +54,17 @@ class ShoppingList extends Component {
                 <ItemModal open={isOpen} close={this.closeModal} addItem={this.addingItemHandler}/>
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
-                        { item != 'undefined' && item != null ? item.map( ({id, name}) => (
-                            <CSSTransition key={id} timeout={500} classNames="fade">
+                        { item != 'undefined' && item != null ? item.map( (item) => (
+                            <CSSTransition key={item.id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                 <Button
                                     className="remove-btn"
                                     color="danger"
                                     size="sm"
-                                    onClick={() => console.log("hello")}
+                                    onClick={() => this.props.deleteItem(item)}
                                 >&times;
                                 </Button>
-                                {name}
+                                {item.name}
                                 </ListGroupItem>
                             </CSSTransition>
                         ) ) 
@@ -86,6 +86,7 @@ ShoppingList.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item)),
+    deleteItem: item => dispatch(deleteItem(item)),
     getItems: () => dispatch(getItems)
 })
 
