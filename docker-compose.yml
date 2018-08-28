@@ -1,0 +1,17 @@
+version: '3' #docker-compose version
+services: #Services are the different containers
+  client_app: #Second Container, containing reactjs front-end
+    build: ./client
+    ports: 
+      - 3000:3000  
+  node_server: #First Container, containing nodejs server
+    build: . #Build image from pwd files
+    ports:
+      - 5000:5000
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'

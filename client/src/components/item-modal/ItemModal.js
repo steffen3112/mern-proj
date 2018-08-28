@@ -29,7 +29,7 @@ export default class ItemModal extends Component {
         const { open, close, addItem } = this.props;
         const  { item } = this.state;
 
-        return(
+        return(<div>
                 <Modal 
                     isOpen={open}
                     onRequestClose={close}
@@ -43,6 +43,7 @@ export default class ItemModal extends Component {
                         <Button id="add-button" color="primary" onClick={() => addItem(item)}>Add Item to Cart</Button>
                     
                 </Modal>
+            </div>
         )
     }
 
