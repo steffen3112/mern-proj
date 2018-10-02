@@ -54,7 +54,7 @@ class ShoppingList extends Component {
                 <ItemModal open={isOpen} close={this.closeModal} addItem={this.addingItemHandler}/>
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
-                        { item != 'undefined' && item !== null ? item.map( (item) => (
+                        { item != 'undefined' && item != null ? item.map( (item) => (
                             <CSSTransition key={item._id} timeout={500} classNames="fade">
                                 <ListGroupItem>
                                 <Button

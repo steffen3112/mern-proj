@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,6 +9,7 @@ import ShoppingList from './components/ShoppingList'
 
 import { Provider } from 'react-redux';
 import {store} from './store'
+import Basket from './components/Basket';
 
 class App extends Component {
   render() {
@@ -16,7 +18,12 @@ class App extends Component {
         <div className="App">
             <h1>Welcome to React</h1>
             <AppNavbar />
-            <ShoppingList />
+            <Router>
+              <Route path="/ShoppingList/" component={ShoppingList} />
+            </Router>
+            <Router>
+              <Route path="/Basket" component={Basket} />
+            </Router>
         </div>
       </Provider>
     );
