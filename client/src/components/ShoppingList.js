@@ -7,6 +7,7 @@ import { getItems, addItem, deleteItem } from '../actions/itemActions';
 
 import PropTypes from 'prop-types';
 import ItemModal from './item-modal/ItemModal';
+import { withRouter } from 'react-router-dom';
 
 class ShoppingList extends Component {
 
@@ -94,4 +95,4 @@ const mapStateToProps = state => ({
     item: state.item
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ShoppingList));

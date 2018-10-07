@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,13 +17,13 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
             <h1>Welcome to React</h1>
-            <AppNavbar />
-            <Router>
-              <Route path="/ShoppingList/" component={ShoppingList} />
-            </Router>
-            <Router>
-              <Route path="/Basket" component={Basket} />
-            </Router>
+            <BrowserRouter>
+              <div>
+                  <AppNavbar />
+                  <Route path="/ShoppingList" component={ShoppingList} />
+                  <Route path="/Basket" component={Basket} />
+              </div>
+            </BrowserRouter>
         </div>
       </Provider>
     );
