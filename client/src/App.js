@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-            <h1>Welcome to React</h1>
+            <h1>Fake Online Shop</h1>
             <BrowserRouter>
               <div>
                   <AppNavbar />

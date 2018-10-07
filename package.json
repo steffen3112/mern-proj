@@ -4,37 +4,17 @@
   "description": "simple mern-stack sample project",
   "main": "server.js",
   "scripts": {
+    "install-all": "concurrently \"npm run client-install\" \"npm run server-install\"",
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "server-install": "npm install --prefix server",
+    "start": "node server.js --prefix server",
+    "server": "nodemon server.js --prefix server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/steffen3112/mern-proj.git"
-  },
-  "keywords": [
-    "mern",
-    "mongodb",
-    "react",
-    "express",
-    "nodejs"
-  ],
-  "author": "Steffen Schwarz",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/steffen3112/mern-proj/issues"
-  },
-  "homepage": "https://github.com/steffen3112/mern-proj#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "concurrently": "^3.6.1",
-    "express": "^4.16.3",
-    "mongoose": "^5.2.5",
-    "react-modal": "^3.5.1"
+    "concurrently": "^3.6.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"

@@ -11,8 +11,11 @@ import {
     Container
 } from 'reactstrap';
 
-class AppNavbar extends Component {
+export default class AppNavbar extends Component {
 
+    //~ Constructor
+    //--------------------------------------------------------------------------------------------------------------------------
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -20,11 +23,17 @@ class AppNavbar extends Component {
         }
     }
 
+    //~ Methods
+    //--------------------------------------------------------------------------------------------------------------------------
+
     toggle = () => {
         this.setState({
             isOpen: !this.state.isOpen
         });
     }
+
+    //~ Render func
+    //--------------------------------------------------------------------------------------------------------------------------
 
     render() {
         return(
@@ -54,5 +63,3 @@ class AppNavbar extends Component {
         );
     }
 }
-
-export default AppNavbar;

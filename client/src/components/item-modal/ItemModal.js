@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Button, Input } from 'reactstrap'
-
+import PropTypes from 'prop-types';
 import './modal.css'
-
 
 Modal.setAppElement('#root')
 
 export default class ItemModal extends Component {
+
+    //~ Constructor
+    //--------------------------------------------------------------------------------------------------------------------------
 
     constructor(props) {
         super(props);
@@ -16,6 +18,9 @@ export default class ItemModal extends Component {
         }
     }
 
+    //~ Methods
+    //--------------------------------------------------------------------------------------------------------------------------
+
     handleChange = (evt) => {
         this.setState({
             item: {
@@ -23,6 +28,9 @@ export default class ItemModal extends Component {
             }
         })
     }
+
+    //~ Render func
+    //--------------------------------------------------------------------------------------------------------------------------
 
     render() {
 
@@ -47,6 +55,19 @@ export default class ItemModal extends Component {
     }
 
 }
+
+//~ PropTypes
+//--------------------------------------------------------------------------------------------------------------------------
+
+Modal.propTypes = {
+    open: PropTypes.bool.isRequired,
+    close: PropTypes.func.isRequired,
+    addItem: PropTypes.func.isRequired
+}
+
+
+//~ Constants
+//--------------------------------------------------------------------------------------------------------------------------
 
 const customStyles = {
     content : {

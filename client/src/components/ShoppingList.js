@@ -11,6 +11,9 @@ import { withRouter } from 'react-router-dom';
 
 class ShoppingList extends Component {
 
+    //~ Constructor
+    //--------------------------------------------------------------------------------------------------------------------------
+
     constructor(){
         super();
 
@@ -18,10 +21,17 @@ class ShoppingList extends Component {
             isOpen: false
         }
     }
-    
+
+
+    //~ Lifecycle hooks
+    //--------------------------------------------------------------------------------------------------------------------------
+
     componentDidMount() {
         this.props.getItems();
     }
+
+    //~ Methods
+    //--------------------------------------------------------------------------------------------------------------------------
 
     openModal = () => {
         this.setState({isOpen: true})
@@ -36,6 +46,9 @@ class ShoppingList extends Component {
             isOpen: false
         }, () => this.props.addItem(item))
     }
+
+    //~ Render func
+    //--------------------------------------------------------------------------------------------------------------------------
 
     render() {
 
@@ -79,11 +92,17 @@ class ShoppingList extends Component {
     }
 }
 
+//~ PropTypes
+//--------------------------------------------------------------------------------------------------------------------------
+
 // The Itemreducer returns a Object with an array and as key "item" --> this.props.item.item accesses the "item-array"
 ShoppingList.propTypes = {
     getItems: PropTypes.func.isRequired,
     item: PropTypes.object.isRequired
 }
+
+//~ Redux stuff
+//--------------------------------------------------------------------------------------------------------------------------
 
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch(addItem(item)),
