@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-export default class Basket extends Component {
+export default class LandingPage extends Component {
 
     //~ Constructor
     //--------------------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,8 @@ export default class Basket extends Component {
     render() {
         return (
         <Container>
-            works
+            <h3>Content following...</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/SMPTE_Color_Bars_16x9.svg" width="100%" height="100%" />
         </Container>
         )
     }
@@ -41,7 +42,7 @@ export default class Basket extends Component {
 //~ PropTypes
 //--------------------------------------------------------------------------------------------------------------------------
 
-Basket.propTypes = {
+LandingPage.propTypes = {
 
 }
 

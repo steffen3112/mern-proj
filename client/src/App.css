@@ -20,3 +20,11 @@
   opacity: 0.001;
   transition: opacity 2000ms ease-out;
 }
+
+a:hover {
+  color: yellow;
+}
+
+.is-active {
+  color: yellow;
+}

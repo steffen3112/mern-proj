@@ -8,8 +8,10 @@ import AppNavbar from './components/AppNavbar';
 import ShoppingList from './components/ShoppingList'
 
 import { Provider } from 'react-redux';
-import {store} from './store'
+import { store } from './redux-store'
 import Basket from './components/Basket';
+import LandingPage from './components/LandingPage';
+import Redirect from 'react-router-dom/Redirect';
 
 class App extends Component {
   render() {
@@ -20,6 +22,8 @@ class App extends Component {
             <BrowserRouter>
               <div>
                   <AppNavbar />
+                  <Redirect from="/" to="/Home" />
+                  <Route path="/Home" component={LandingPage} />
                   <Route path="/ShoppingList" component={ShoppingList} />
                   <Route path="/Basket" component={Basket} />
               </div>
